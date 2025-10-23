@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Import core context -->
+    <import resource="classpath:applicationContext.xml"/>
+
+    <!-- REST Controller -->
+    <bean id="supplierController" class="com.exemple.myapp.controller.SupplierController">
+        <constructor-arg ref="supplierService" />
+    </bean>
+
+    <!-- REST URL mappings  -->
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="/v1/suppliers">supplierController</prop>
+                <prop key="/v1/suppliers/*">supplierController</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
+</beans>
