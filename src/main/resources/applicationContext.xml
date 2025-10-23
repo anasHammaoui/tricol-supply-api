@@ -12,7 +12,7 @@
         <property name="password" value="" />
     </bean>
 
-    <!-- Entity Manager Factory-->
+    <!--     Entity Manager Factory-->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="packagesToScan" value="com.exemple.myapp.model" />
@@ -33,16 +33,20 @@
         <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
 
+
+    <!-- Enable Spring Data JPA repositories -->
+    <!--    <jpa:repositories base-package="com.exemple.myapp.repository" />-->
+
     <!-- Enable annotation-driven transaction management -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <!-- Repository -->
-    <bean id="supplierRepository" class="com.exemple.myapp.repository.impl.SupplierRepository">
-        <constructor-arg ref="entityManagerFactory" />
+    <bean id="supplierRepository" class="com.exemple.myapp.repository.SupplierRepositoryImpl">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
 
     <!-- Service -->
-    <bean id="supplierService" class="com.exemple.myapp.service.impl.SupplierService">
+    <bean id="supplierService" class="com.exemple.myapp.service.SupplierServiceImpl">
         <constructor-arg ref="supplierRepository" />
     </bean>
 </beans>
