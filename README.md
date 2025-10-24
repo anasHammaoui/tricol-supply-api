@@ -40,6 +40,9 @@ Cette première phase du projet vise à développer un module robuste de gestion
 - Configuration Spring utilisant les trois approches (XML, annotations, Java Config)
 - Component Scanning
 
+### Documentation api
+- https://documenter.getpostman.com/view/42631862/2sB3WjyisW
+
 ### Architecture
 - Conception en couches (Repository, Service, Controller)
 - Utilisation des interfaces repository de Spring Data JPA
