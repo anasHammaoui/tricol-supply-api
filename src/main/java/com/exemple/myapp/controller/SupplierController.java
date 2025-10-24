@@ -5,22 +5,25 @@ import com.exemple.myapp.model.Supplier;
 import com.exemple.myapp.service.SupplierService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
 import java.io.BufferedReader;
 import java.util.List;
 
+@Controller("supplierController")
 public class SupplierController extends AbstractController {
 
     private SupplierService supplierService;
     private final Gson gson = new Gson();
 
     public SupplierController() {
-        // Explicitly set supported methods including PUT
         setSupportedMethods(new String[]{"GET", "POST", "PUT", "DELETE", "HEAD"});
     }
 
+    @Autowired
     public SupplierController(SupplierService supplierService){
         this();
         this.supplierService = supplierService;

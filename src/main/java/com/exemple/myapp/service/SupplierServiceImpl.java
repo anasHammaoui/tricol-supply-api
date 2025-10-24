@@ -2,14 +2,25 @@ package com.exemple.myapp.service;
 
 import com.exemple.myapp.model.Supplier;
 import com.exemple.myapp.repository.SupplierRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Service Implementation with @Service annotation
+ * Spring will automatically discover and manage this bean
+ */
+@Service("supplierService")
 public class SupplierServiceImpl implements SupplierService{
-
 
     private SupplierRepository supplierRepository;
 
+    /**
+     * @Autowired tells Spring to inject the SupplierRepository
+     * Replaces: <constructor-arg ref="supplierRepository" />
+     */
+    @Autowired
     public SupplierServiceImpl(SupplierRepository supplierRepository){
         this.supplierRepository = supplierRepository;
     }

@@ -3,12 +3,17 @@ package com.exemple.myapp.repository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import com.exemple.myapp.model.Supplier;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository("supplierRepository")
 public class SupplierRepositoryImpl implements SupplierRepository{
+    
     private EntityManagerFactory entityManagerFactory;
 
+    @Autowired
     public void setEntityManagerFactory(EntityManagerFactory entityManagerFactory) {
         this.entityManagerFactory = entityManagerFactory;
     }
